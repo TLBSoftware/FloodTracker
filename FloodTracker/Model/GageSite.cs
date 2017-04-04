@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FloodTracker.Model
 {
-    class GageSite
+    class GageSite : ObservableObject
     {
         private string _agencyCd;
         private string _siteNo;
@@ -16,22 +16,22 @@ namespace FloodTracker.Model
         public string AgencyCd
         {
             get { return _agencyCd; }
-            set { _agencyCd = value; }
+            set { OnPropertyChanged<string>(ref _agencyCd, value); }
         }
         public string SiteNo
         {
             get { return _siteNo; }
-            set { _siteNo = value; }
+            set { OnPropertyChanged<string>(ref _siteNo, value); }
         }
         public DateTime Date
         {
             get { return _dateTime; }
-            set { _dateTime = value; }
+            set { OnPropertyChanged<DateTime>(ref _dateTime, value); }
         }
         public double Discharge
         {
             get { return _discharge; }
-            set { _discharge = value; }
+            set { OnPropertyChanged<double>(ref _discharge, value); }
         }
     }
 }
