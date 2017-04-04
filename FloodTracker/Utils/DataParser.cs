@@ -42,14 +42,14 @@ namespace FloodTracker.Utils
                 //assign those values to new GaugeSite object
                 returnData[i] = new GageSite()
                 {
-                    _agency_cd = data[0],
-                    _site_no = data[1],
-                    _datetime = stringToDateTime(data[2])
+                    AgencyCd = data[0],
+                    SiteNo = data[1],
+                    Date = stringToDateTime(data[2])
                 };
                 double tempDouble = 0.0;
                 if (double.TryParse(data[3], out tempDouble))
                 {
-                    returnData[i]._discharge = tempDouble;
+                    returnData[i].Discharge = tempDouble;
                 }
 
             }
