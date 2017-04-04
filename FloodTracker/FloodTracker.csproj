@@ -55,6 +55,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\GageSiteURL.cs" />
     <Compile Include="ObservableObject.cs" />
     <Compile Include="Utils\DataParser.cs" />
     <Compile Include="Utils\RequestData.cs" />
