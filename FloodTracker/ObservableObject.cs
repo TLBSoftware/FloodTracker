@@ -12,10 +12,15 @@ namespace FloodTracker
     {
         public event PropertyChangedEventHandler PropertyChanged;
 
+        internal void TriggerEvent(string name)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        }
+
         public void OnPropertyChanged<T>(ref T field, T value, [CallerMemberName] string propertyName = "")
         {
             field = value;
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+            TriggerEvent(propertyName);
         }
     }
 }

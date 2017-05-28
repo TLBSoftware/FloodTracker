@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FloodTracker"
+        xmlns:viewmodel="clr-namespace:FloodTracker.ViewModel"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
@@ -13,15 +14,18 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" UseLayoutRounding="False" Margin="0,0,0,10">
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Site #:"/>
-            <TextBox x:Name="siteNoTextBox" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
-            <Button x:Name="button" HorizontalAlignment="Left" Margin="10" Width="auto" Content="Retrieve Data" Height="22" VerticalAlignment="Top" Click="button_RetrieveData"/>
+            <TextBox x:Name="siteNoTextBox" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="{Binding SiteString}" VerticalAlignment="Top" Width="120"/>
+            <Button x:Name="button" HorizontalAlignment="Left" Margin="10" Width="auto" Content="Retrieve Data" Height="22" VerticalAlignment="Top" Command="{Binding GetDataButton}"
+                    CommandParameter="{Binding ElementName=siteNoTextBox, Path=Text}"/>
         </StackPanel>
-        <RichTextBox x:Name="richTextBox" Margin="10" Grid.Row="1">
+        <RichTextBox x:Name="richTextBox" Margin="10" Grid.Row="1" >
+            
             <FlowDocument>
                 <Paragraph>
-                    <Run Text="RichTextBox"/>
+                    <Run Text="{Binding DataString}"/>
                 </Paragraph>
             </FlowDocument>
+
         </RichTextBox>
 
     </Grid>

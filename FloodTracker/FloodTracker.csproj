@@ -57,9 +57,11 @@
     </ApplicationDefinition>
     <Compile Include="Model\GageSiteURL.cs" />
     <Compile Include="ObservableObject.cs" />
+    <Compile Include="RelayCommand.cs" />
     <Compile Include="Utils\DataParser.cs" />
     <Compile Include="Utils\RequestData.cs" />
     <Compile Include="Utils\WaterUrlGenerator.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -100,6 +102,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

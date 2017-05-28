@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using FloodTracker.Utils;
 using FloodTracker.Model;
+using FloodTracker.ViewModel;
 
 namespace FloodTracker
 {
@@ -25,37 +26,9 @@ namespace FloodTracker
         public MainWindow()
         {
             InitializeComponent();
+            DataContext = new MainViewModel();
         }
 
-        private void button_RetrieveData(object sender, RoutedEventArgs e)
-        {
-            //Get site no from textbox
-            string siteNo = siteNoTextBox.Text;
-            if (isDigitsOnly(siteNo))
-            {
-                //siteNo contains all digits so create the url for the data
-                string url = new WaterUrlGenerator(siteNo).GetUrl();
-                Console.WriteLine($"URL: {url}");
-
-                //Perform an HTTP GET request to the url to get the data
-                string request = RequestData.RetrieveData(url);
-
-                //either display data or parse for further use
-                richTextBox.Document.Blocks.Add(new Paragraph(new Run(request)));
-            }else
-            {
-                //display error message
-            }
-            
-        }
-
-        private bool isDigitsOnly(string s)
-        {
-            foreach (char c in s)
-            {
-                if (c < '0' || c > '9') return false;
-            }
-            return true;
-        }
+        
     }
 }
