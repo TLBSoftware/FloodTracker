@@ -11,17 +11,44 @@ namespace FloodTracker.ViewModel
 {
     public class MainViewModel : ObservableObject
     {
+        #region Private Fields
+        /// <summary>
+        /// Private string to hold a default site no.
+        /// </summary>
         private string _siteString = "06919020";
-        private string _dataString = "";
+
+        /// <summary>
+        /// Private String to hold the data returned from the GET Request
+        /// </summary>
+        private string _dataString;
+
+        /// <summary>
+        /// ICommand implementation for the button that performs a GET request for the data
+        /// </summary>
         private RelayCommand _getDataButton;
-        public string SiteString { get { return _siteString; } set
+        #endregion
+
+        #region Public Properties
+        /// <summary>
+        /// String property for the textbox that requires a Stream gage Site No.
+        /// </summary>
+        public string SiteString
+        {
+            get { return _siteString; }
+            set
             {
                 if (_siteString != value)
                 {
                     OnPropertyChanged<string>(ref _siteString, value);
                 }
-            } }
-        public string DataString {
+            }
+        }
+
+        /// <summary>
+        /// Data property for the RichTextBox that displays the data
+        /// </summary>
+        public string DataString
+        {
             get
             {
                 return _dataString;
@@ -35,13 +62,17 @@ namespace FloodTracker.ViewModel
             }
         }
         public RelayCommand GetDataButton { get { return _getDataButton; } set { if (_getDataButton != value) OnPropertyChanged(ref _getDataButton, value); } }
+        #endregion
 
+        #region Constructor
         public MainViewModel()
         {
             _getDataButton = new RelayCommand(button_RetrieveData);
 
         }
+        #endregion
 
+        #region Methods
         private void button_RetrieveData(object sender)
         {
             //Get site no from textbox
@@ -83,5 +114,7 @@ namespace FloodTracker.ViewModel
             }
             return false;
         }
+        #endregion
+
     }
 }

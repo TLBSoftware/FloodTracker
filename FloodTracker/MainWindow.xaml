@@ -15,7 +15,12 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" UseLayoutRounding="False" Margin="0,0,0,10">
             <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="10" TextWrapping="Wrap" Text="Site #:"/>
             <TextBox x:Name="siteNoTextBox" HorizontalAlignment="Left" Height="23" Margin="10" TextWrapping="Wrap" Text="{Binding SiteString}" VerticalAlignment="Top" Width="120"/>
-            <Button x:Name="button" HorizontalAlignment="Left" Margin="10" Width="auto" Content="Retrieve Data" Height="22" VerticalAlignment="Top" Command="{Binding GetDataButton}"
+            <Button x:Name="button" 
+                    HorizontalAlignment="Left" 
+                    Margin="10" Width="auto" 
+                    Content="Retrieve Data" 
+                    Height="22" VerticalAlignment="Top" 
+                    Command="{Binding GetDataButton}"
                     CommandParameter="{Binding ElementName=siteNoTextBox, Path=Text}"/>
         </StackPanel>
         <RichTextBox x:Name="richTextBox" Margin="10" Grid.Row="1" >
